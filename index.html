@@ -69,19 +69,25 @@
     </style>
 </head>
 <body>
+    <!-- Audio ẩn, tự động chạy ngầm khi click bất kì đâu -->
+    <audio id="bg-music" src="music_Slowed.mp3" loop style="display: none;"></audio>
 
     <div class="container">
         <h1>tool</h1>
         <a href="Velocity.7z" class="btn" download>Velocity.7z</a>
         <a href="script.txt" class="btn script" download>Script (Notepad)</a>
-        <div style="text-align: center; margin-top: 15px;">
-            <audio controls loop style="width: 100%; max-width: 300px; height: 32px;">
-                <source src="music_Slowed.mp3" type="audio/mp3">
-            </audio>
-        </div>
-        
         <div class="footer">my exc and script</div>
     </div>
 
+    <script>
+        document.addEventListener('click', function() {
+            var music = document.getElementById('bg-music');
+            if (music.paused) {
+                music.play().catch(function(error) {
+                    console.log("Autoplay blocked");
+                });
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>
